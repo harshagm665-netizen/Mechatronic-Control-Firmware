@@ -1,23 +1,14 @@
-<<<<<<< HEAD
-# Robot Kinematics & Motion Profiling
+# Mechatronic-Control-Firmware ⚙️
 
-## 📐 Mathematical Model
-The robot is modeled as a 2-DOF serial chain:
-1. **Joint 1 (Revolute):** Neck pitch rotation ($\theta$) limited to $\pm45^\circ$.
-2. **Joint 2 (Prismatic):** Linear hand extension ($d$) along the neck's local axis.
+## 📌 Overview
+Low-latency C++ firmware developed for an Arduino/ESP32-based service robot. This repository manages real-time actuator control, sensor data fusion, and robust serial communication with a high-level Python controller.
 
-## 🧮 Forward Kinematics
-The position of the hand tip $(x, z)$ is computed as:
-$$x = d \cdot \cos(\theta)$$
-$$z = h_{neck} + d \cdot \sin(\theta)$$
+## 🚀 Key Features
+- **Deterministic Control Loop:** Implemented a non-blocking `millis()` based architecture to ensure consistent 20Hz execution.
+- **Custom Serial Protocol:** Uses a 3-byte packet system (`Header-Command-Footer`) with error-checking to prevent malformed data execution.
+- **PID Synchronization:** Optimized motor PWM signals for fluid limb movement and precise base locomotion.
 
-## 🛠️ Implementation
-- **Decoupled Logic:** The kinematics engine is separate from the visualization to allow for integration into real-time control loops.
-- **Safety Constraints:** Software-level validation to prevent mechanical over-extension.
-# Robot-Kinematics-Sim
-The Tech: Python, NumPy, Matplotlib, Gazebo/URDF.
-
-What it does: "Calculates Forward and Inverse Kinematics for a robotic neck and hand assembly to ensure precise positioning in 3D space."
-
-The Win: "Simulated motion profiles to prevent mechanical singularities and optimize actuator torque distribution."
->>>>>>> 93858516cbb76f0411de4350d63186593777770b
+## 🛠️ Tech Stack
+- **Language:** C++ (Arduino Framework)
+- **Hardware:** ATmega2560 / ESP32
+- **Peripherals:** L298N H-Bridge, SG90 Servos, UART Communication
